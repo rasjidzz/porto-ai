@@ -1,0 +1,31 @@
+.response-box {
+    min-height: 80px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.loading {
+    text-align: center;
+}
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+.reset-button {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+}
+.save-button {
+    margin-top: 20px;
+    background-color: #11935a;
+    color: white;
+}
+
+#spinner {
+    margin-top: 10px;
+}
