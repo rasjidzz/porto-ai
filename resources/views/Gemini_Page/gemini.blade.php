@@ -66,9 +66,10 @@
             let combinedPrompt = "";
             for (let i = 0; i < conversationHistory.length; i++) {
                 combinedPrompt += "Q: " + conversationHistory[i].userQuestion + "\n" +
-                                "A: " + conversationHistory[i].aiResponse + "\n";
+                "A: " + conversationHistory[i].aiResponse + "\n";
             }
             combinedPrompt += "Q: " + prompt;
+            console.log(combinedPrompt);
 
             axios.post('/generate-gemini', { prompt: combinedPrompt })
                 .then(response => {
@@ -85,6 +86,14 @@
                     loadingModal.close();
 
                     document.getElementById("prompt").value = '';
+
+                    // Simpan ke database
+                    axios.post('/save-prompt', {
+                        user_id: null,
+                        user_question: prompt,
+                        ai_response: reply
+                    }).then(res => console.log("Prompt saved:", res.data))
+                    .catch(err => console.error("Error saving prompt:", err));
                 })
                 .catch(error => {
                     loadingModal.close();
