@@ -5,7 +5,7 @@ use App\Http\Controllers\PromptController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/gemini', [GeminiController::class, 'index']);
