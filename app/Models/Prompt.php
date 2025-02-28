@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Prompt extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
-    protected $fillable = ['chat_session_id', 'user_question', 'ai_response'];
+    protected $fillable = ['id', 'chat_session_id', 'user_question', 'ai_response'];
     public $incrementing = false;
     protected $keyType = 'string';
 

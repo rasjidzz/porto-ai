@@ -18,10 +18,8 @@ return new class extends Migration
             $table->text('ai_response')->nullable();
             $table->timestamps();
 
-            $table->foreign('chat_session_id')
-                ->references('chat_session_id')
-                ->on('chat_sessions')
-                ->onDelete('cascade');
+            // Foreign Key harus sama persis dengan primary key chat_sessions
+            $table->foreign('chat_session_id')->references('chat_session_id')->on('chat_sessions')->onDelete('cascade');
         });
     }
 

@@ -33,6 +33,7 @@
     <script>
         // new with history
         let conversationHistory = [];
+        let chat_session = null;
 
         function generateGemini() {
             const prompt = document.getElementById("prompt").value;
@@ -47,6 +48,13 @@
                 });
                 return;
             }
+
+            // Jika belum ada session, buat session baru dengan timestamp unik (NEW)
+            if (!chat_session) {
+                chat_session = "session_" + new Date().getTime();
+            }
+            console.log(chat_session);
+            // Jika belum ada session, buat session baru dengan timestamp unik (NEW)
 
             const loadingModal = Swal.fire({
                 title: 'Processings...',
@@ -89,9 +97,9 @@
 
                     // Simpan ke database
                     axios.post('/save-prompt', {
-                        user_id: null,
                         user_question: prompt,
-                        ai_response: reply
+                        ai_response: reply,
+                        chat_session: chat_session
                     }).then(res => console.log("Prompt saved:", res.data))
                     .catch(err => console.error("Error saving prompt:", err));
                 })
@@ -119,6 +127,7 @@
 
             // Reset riwayat percakapan
             conversationHistory = [];
+            chat_session = null; // Reset chat session
         }
 
 
