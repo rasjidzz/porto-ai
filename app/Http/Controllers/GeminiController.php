@@ -16,6 +16,10 @@ class GeminiController extends Controller
     {
         return view('Gemini_Page.gemini');
     }
+    public function newPage()
+    {
+        return view('New_Page.index');
+    }
     public function generate(Request $request)
     {
         $request->validate(['prompt' => 'required|string']);

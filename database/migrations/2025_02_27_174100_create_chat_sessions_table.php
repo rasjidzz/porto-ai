@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('chat_sessions', function (Blueprint $table) {
             $table->uuid('chat_session_id')->primary();
+            $table->longText('combined_question')->nullable();
             $table->timestamps();
         });
     }

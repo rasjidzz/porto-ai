@@ -20,6 +20,12 @@
             </div>
             <button class="btn btn-primary w-100" onclick="generateGemini()">Send</button>
             <div class="mt-4">
+                <h5>Prompt / Question : </h5>
+                <div id="question" class="question-box">
+                    <div class="loading" id="loading-message">No Question Yet</div>
+                </div>
+            </div>
+            <div class="mt-4">
                 <h5>Results (Gemini AI API):</h5>
                 <div id="response" class="response-box">
                     <div class="loading" id="loading-message">No Respond Yet.</div>
@@ -39,6 +45,7 @@
             const prompt = document.getElementById("prompt").value;
             const responseDiv = document.getElementById("response");
             const loadingMessage = document.getElementById("loading-message");
+            const questionDiv = document.getElementById("question");
 
             if (!prompt.trim()) {
                 Swal.fire({
@@ -69,6 +76,8 @@
 
             responseDiv.innerHTML = '';
             responseDiv.classList.remove("error-message");
+            questionDiv.innerHTML = '';
+            questionDiv.classList.remove("error-message");
 
             // Gabungkan riwayat percakapan sebelumnya dengan prompt baru
             let combinedPrompt = "";
@@ -87,6 +96,7 @@
 
                     responseDiv.classList.remove("loading");
                     responseDiv.innerHTML = formattedReply;
+                    questionDiv.innerHTML = document.getElementById("prompt").value
 
                     // Simpan percakapan baru dalam riwayat
                     conversationHistory.push({ userQuestion: prompt, aiResponse: reply });

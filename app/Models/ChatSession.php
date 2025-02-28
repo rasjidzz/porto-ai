@@ -15,7 +15,7 @@ class ChatSession extends Model
     protected $primaryKey = 'chat_session_id';
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $fillable = ['chat_session_id',];
+    protected $fillable = ['chat_session_id', 'combined_question'];
 
     public function prompts(): HasMany
     {
