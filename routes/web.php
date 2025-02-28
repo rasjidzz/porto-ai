@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GeminiController;
+use App\Http\Controllers\PromptController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,5 +9,6 @@ Route::get('/', function () {
 });
 
 Route::get('/gemini', [GeminiController::class, 'index']);
+Route::post('/save-prompt', [PromptController::class, 'storePrompt']);
 
 Route::post('/generate-gemini', [GeminiController::class, 'generate']);
