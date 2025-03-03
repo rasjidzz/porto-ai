@@ -13,9 +13,12 @@
 </head>
 <body>
     <div id="particles-js"></div>
-    <div class="container">
-        <h2 class="text-center mb-4">Ask Me Anything!</h2>
-        <div class="card">
+    <br>
+    <br>
+    <br>
+    <h2 class="text-center mb-4">Ask Me Anything!</h2>
+    <div class="container d-flex">
+        <div class="card flex-grow-1">
             <div class="mt-4">
                 <h5 style="color: azure">Results:</h5>
                 <div id="response" class="response-box" style="color: azure">
@@ -34,10 +37,16 @@
             </div>
         </div>
     </div>
-
+    <div class="sidebar" id="sidebar">
+        {{-- <h5 style="color: azure">jawa</h5> --}}
+        <ul id="chat-history" style="color: azure; list-style-type: none; padding: 0;">
+            <!-- Chat history items will be appended here -->
+        </ul>
+    </div>
+    <button class="btn btn-dark" id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
 
     <script>
-
+        
 particlesJS("particles-js", {
     "particles": {
         "number": {
@@ -196,6 +205,11 @@ particlesJS("particles-js", {
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // **bold**
             .replace(/\*(.*?)\*/g, '<em>$1</em>')  // *italic*
             .replace(/\n/g, '<br>');  // Convert line breaks to <br> for proper formatting
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('closed');
         }
     </script>
 </body>
